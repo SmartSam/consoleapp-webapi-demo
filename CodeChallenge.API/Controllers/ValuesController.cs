@@ -82,10 +82,10 @@ namespace DatingApp.API.Controllers
         [HttpGet("getmostrecent/{timespan_seconds}")]
         public async Task<IActionResult> GetMostRecent(int timespan_seconds)
         {
-            var returnValue = new List<server_response_log>();
+            var returnValue = new List<recentResponseLog>();
             try
             {
-                returnValue = await _context.server_response_log
+               returnValue = await _context.recentResponseLogs
                     .FromSqlRaw("EXECUTE dbo.spMostRecentResponseLogs {0}", timespan_seconds).AsNoTracking().ToListAsync();
 
             }
@@ -100,11 +100,11 @@ namespace DatingApp.API.Controllers
         [HttpGet("geterrorcodereport")]
         public async Task<IActionResult> GetErrorCodeReport()
         {
-            var returnValue = new List<server_response_log>();
+            var returnValue = new List<errorCodeLog>();
             try
             {
 
-                returnValue = await _context.server_response_log
+                returnValue = await _context.errorCodeLogs
                     .FromSqlRaw("SELECT * FROM dbo.ServerResponseErrors").AsNoTracking().ToListAsync();
             }
             catch (Exception ex)

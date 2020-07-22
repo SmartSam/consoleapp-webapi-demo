@@ -11,8 +11,7 @@ namespace CodeChallenge.API.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
-                .Entity<server_response_log>(eb =>
+            modelBuilder.Entity<server_response_log>(eb =>
                 {
                     // https://github.com/dotnet/EntityFramework.Docs/issues/898
                     //if (Database.IsSqlServer())
@@ -20,6 +19,16 @@ namespace CodeChallenge.API.Data
                     //else
                     eb.HasKey(e => e.Starttime);
                 });
+            modelBuilder.Entity<recentResponseLog>(eb =>
+                 {
+                 eb.HasNoKey();
+             });
+
+            modelBuilder.Entity<errorCodeLog>(eb =>
+            {
+                eb.HasNoKey();
+                eb.ToView("ServerResponseErrors");
+            });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,5 +39,7 @@ namespace CodeChallenge.API.Data
             }
         }
         public DbSet<server_response_log> server_response_log { get; set; }
-     }
+        public DbSet<errorCodeLog> errorCodeLogs { get; set; }
+        public DbSet<recentResponseLog> recentResponseLogs { get; set; }
+    }
 }
