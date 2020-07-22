@@ -73,7 +73,7 @@ namespace NUnitTests
         [Test]
         public async Task GetErrorCodeReport_Success()
         {
-            //going to have to sqlserver since this is testing a rawsql call to a stored procedure
+            //going to have to sqlserver since this is testing a rawsql call to a view
             var result = await _valuesController.GetErrorCodeReport();
             Assert.Pass();
 
