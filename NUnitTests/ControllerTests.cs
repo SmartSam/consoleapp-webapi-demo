@@ -4,6 +4,7 @@ using DatingApp.API.Controllers;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System;
+using System.Threading.Tasks;
 
 namespace NUnitTests
 {
@@ -58,6 +59,24 @@ namespace NUnitTests
             _dataContext.Add(log);
             _dataContext.SaveChanges();
            
+        }
+
+        [Test]
+        public async Task GetMostRecent_Success()
+        {
+            //going to have to sqlserver since this is testing a rawsql call to a stored procedure
+            var result = await _valuesController.GetMostRecent(100000);
+            Assert.Pass();
+
+        }
+
+        [Test]
+        public async Task GetErrorCodeReport_Success()
+        {
+            //going to have to sqlserver since this is testing a rawsql call to a stored procedure
+            var result = await _valuesController.GetErrorCodeReport();
+            Assert.Pass();
+
         }
 
         public DataContext GetDbContext(bool useSqlite)

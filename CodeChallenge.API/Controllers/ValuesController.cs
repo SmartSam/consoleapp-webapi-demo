@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using CodeChallenge.API.Data;
@@ -76,6 +77,42 @@ namespace DatingApp.API.Controllers
         {
             _context.Add(response_Log);
             _context.SaveChanges();
+        }
+
+        [HttpGet("getmostrecent/{timespan_seconds}")]
+        public async Task<IActionResult> GetMostRecent(int timespan_seconds)
+        {
+            var returnValue = new List<server_response_log>();
+            try
+            {
+                returnValue = await _context.server_response_log
+                    .FromSqlRaw("EXECUTE dbo.spMostRecentResponseLogs {0}", timespan_seconds).AsNoTracking().ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+            return Ok(returnValue);
+        }
+
+        [HttpGet("geterrorcodereport")]
+        public async Task<IActionResult> GetErrorCodeReport()
+        {
+            var returnValue = new List<server_response_log>();
+            try
+            {
+
+                returnValue = await _context.server_response_log
+                    .FromSqlRaw("SELECT * FROM dbo.ServerResponseErrors").AsNoTracking().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+            return Ok(returnValue);
         }
 
         // PUT api/values/5

@@ -16,13 +16,22 @@ CREATE TABLE [dbo].[server_response_log](
 
 END
 
-IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'ClusteredIndex-20200721-191346' AND object_id = OBJECT_ID('server_response_log'))
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'NonClusteredIndex-StartTime' AND object_id = OBJECT_ID('server_response_log'))
     BEGIN
-       CREATE UNIQUE CLUSTERED INDEX [ClusteredIndex-20200721-191346] ON [dbo].[server_response_log]
-(
-	[Starttime] ASC,
-	[Endtime] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+      CREATE UNIQUE NONCLUSTERED INDEX [NonClusteredIndex-StartTime] ON [dbo].[server_response_log]
+		(
+			[Starttime] ASC
+		)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+
+    END
+
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'NonClusteredIndex-ErrorCode' AND object_id = OBJECT_ID('server_response_log'))
+    BEGIN
+		CREATE NONCLUSTERED INDEX [NonClusteredIndex-ErrorCode] ON [dbo].[server_response_log]
+		(
+			[ErrorCode] ASC
+		)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+
     END
 
 	IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[spMostRecentResponseLogs]') AND type in (N'P', N'PC'))
