@@ -3,7 +3,7 @@
 namespace CodeChallenge.API.Models
 {
     
-    public class server_reponse_log
+    public class server_response_log
     {
         public  DateTime Starttime { get; set; }
         public DateTime Endtime { get; set; }

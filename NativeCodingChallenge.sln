@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppChallenge", "ConsoleAppChallenge\ConsoleAppChallenge.csproj", "{5637C043-9353-42AF-8E52-B616F4D88091}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChallenge.API", "CodeChallenge.API\CodeChallenge.API.csproj", "{B3F162EE-BE68-441D-A0F7-CD9DB083D183}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeChallenge.API", "CodeChallenge.API\CodeChallenge.API.csproj", "{B3F162EE-BE68-441D-A0F7-CD9DB083D183}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTests", "NUnitTests\NUnitTests.csproj", "{3D158BD8-4836-4F3D-B212-7FD0DDBB2898}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B3F162EE-BE68-441D-A0F7-CD9DB083D183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3F162EE-BE68-441D-A0F7-CD9DB083D183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3F162EE-BE68-441D-A0F7-CD9DB083D183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D158BD8-4836-4F3D-B212-7FD0DDBB2898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D158BD8-4836-4F3D-B212-7FD0DDBB2898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D158BD8-4836-4F3D-B212-7FD0DDBB2898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D158BD8-4836-4F3D-B212-7FD0DDBB2898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
