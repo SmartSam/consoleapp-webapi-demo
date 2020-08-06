@@ -37,7 +37,7 @@ t2: 1
 
 ## Part 3. SQL
 - Assume that this table will have a high load and millions of rows.
-- Create a new database instance called ae_code_challange
+- Create a new database
 - Create a new table called server_response_log.
 - Add columns to the table for a logging table that will collect the following data:
   - Start time:  time when the request was sent to the server
