@@ -53,6 +53,4 @@ t2: 1
   - Timeout
  - Add a stored procedure to return the most recent 5 Response text and Start times occurring within the timespan passed into the procedure.
  - Add a view to show the count of each error code per hour and the error code.
- - Add a unit test for each simulated case, the stored procedure and the view.#� �n�a�t�i�v�e�c�o�d�i�n�g�c�h�a�l�l�e�n�g�e�
-�
-�
+ - Add a unit test for each simulated case, the stored procedure and the view.
